@@ -7,29 +7,47 @@ namespace template.Persistence.Mongo.Mappings
 {
     public class CustomerMap
     {
-        public CustomerMap()
+        internal CustomerMap()
         {
         }
 
-        public CustomerMap(Customer customer)
+        internal CustomerMap(Customer customer)
         {
-            CustomerId = (customer.CustomerId != null) ? Guid.Parse(customer.CustomerId) : (Guid?) null;
+            CustomerId = customer.CustomerId;
             FirstName = customer.FirstName;
             LastName = customer.LastName;
             Email = customer.Email?.CompleteEmailAddress;
             PhoneNumber = customer.PhoneNumber;
             DateRegistered = customer.DateRegistered;
+            IsActive = customer.IsActive;
         }
 
+        // Specific to MongoDB implementation
         [BsonId(IdGenerator = typeof(GuidGenerator))]
-        public Guid? CustomerId { get; set; }
+        public Guid? ObjectId { get; set; }
+
+        [BsonElement("customer_id")]
+        public string CustomerId { get; set; }
+
+        [BsonElement("first_name")]
         public string FirstName { get; set; }
+
+        [BsonElement("last_name")]
         public string LastName { get; set; }
+
+        [BsonElement("email")]
         public string Email { get; set; }
+
+        [BsonElement("phone_number")]
         public string PhoneNumber { get; set; }
+
+        [BsonElement("date_registered")]
         public DateTime? DateRegistered { get; set; }
 
-        public Customer MapToDomain()
+        [BsonElement("is_active")]
+        public bool IsActive { get; set; }
+
+        internal Customer MapToDomain()
         {
             return new Customer
             {

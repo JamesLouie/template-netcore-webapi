@@ -8,8 +8,6 @@ namespace template.Api.Contracts.Customer
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public DateTime? DateRegistered { get; set; }
-        public bool IsActive { get; set; }
 
         public Domain.Entities.Customer ToDomain()
         {
@@ -18,9 +16,7 @@ namespace template.Api.Contracts.Customer
                 FirstName = FirstName,
                 LastName = LastName,
                 Email = (Email != null) ? new Domain.ValueObjects.Email(Email) : null,
-                PhoneNumber = PhoneNumber,
-                DateRegistered = DateRegistered,
-                IsActive = IsActive
+                PhoneNumber = PhoneNumber
             };
         }
     }

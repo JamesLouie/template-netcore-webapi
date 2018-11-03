@@ -13,7 +13,7 @@ namespace template.Api.Configurations
         public static void ConfigureApplication(this IServiceCollection services, AppSettings settings)
         {
             ConfigureInternal(services, settings);
-            ConfigureInternal(services, settings);
+            ConfigureExternal(services, settings);
         }
 
         private static void ConfigureInternal(IServiceCollection services, AppSettings settings)
