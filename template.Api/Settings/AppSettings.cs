@@ -1,4 +1,4 @@
-﻿namespace template.Api
+﻿namespace template.Api.Settings
 {
     public class AppSettings
     {

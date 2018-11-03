@@ -3,11 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using template.Application.Handlers;
-using template.Application.Interfaces.External;
-using template.Application.Providers;
-using template.Persistence.Mongo.Client;
-using template.Persistence.Mongo.Repositories;
+using template.Api.Configurations;
+using template.Api.Settings;
 
 namespace template.Api
 {
@@ -20,19 +17,16 @@ namespace template.Api
             AppSettings = configuration.Get<AppSettings>();
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddTransient<ICustomerHandler, CustomerHandler>();
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
-            services.AddSingleton<MongoConnector>(new MongoConnector(AppSettings.Database.ConnectionString, AppSettings.Database.DatabaseName));
+            services.ConfigureApplication(AppSettings);
+            services.AddSwaggerGen();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -40,6 +34,7 @@ namespace template.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureSwagger();
             app.UseMvc();
         }
     }
