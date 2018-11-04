@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using template.Domain.Entities;
 
 namespace template.Application.Interfaces.External
 {
     public interface IBillingInformationRepository
     {
-        BillingInformation GetBillingInformation(string billingInformationId);
+        Task<BillingInformation> GetBillingInformation(string billingInformationId);
         Task CreateBillingInformation(BillingInformation billingInformation);
-        void UpdateBillingInformation(BillingInformation update);
-        void DeleteBillingInformation(string billingInformationId);
+        Task UpdateBillingInformation(BillingInformation update);
+        Task DeleteBillingInformation(string billingInformationId);
 
-        IEnumerable<BillingInformation> GetAllBillingInformations();
-
-        BillingInformation GetBillingInformationForCustomerId(string customerId);
+        Task<BillingInformation> GetBillingInformationForCustomerId(string customerId);
     }
 }

@@ -5,7 +5,7 @@ using template.Domain.Entities;
 
 namespace template.Persistence.Mongo.Mappings
 {
-    public class CustomerMap
+    internal class CustomerMap
     {
         internal CustomerMap()
         {
@@ -24,28 +24,28 @@ namespace template.Persistence.Mongo.Mappings
 
         // Specific to MongoDB implementation
         [BsonId(IdGenerator = typeof(GuidGenerator))]
-        public Guid? ObjectId { get; set; }
+        internal Guid? ObjectId { get; set; }
 
         [BsonElement("customer_id")]
-        public string CustomerId { get; set; }
+        internal string CustomerId { get; set; }
 
         [BsonElement("first_name")]
-        public string FirstName { get; set; }
+        internal string FirstName { get; set; }
 
         [BsonElement("last_name")]
-        public string LastName { get; set; }
+        internal string LastName { get; set; }
 
         [BsonElement("email")]
-        public string Email { get; set; }
+        internal string Email { get; set; }
 
         [BsonElement("phone_number")]
-        public string PhoneNumber { get; set; }
+        internal string PhoneNumber { get; set; }
 
         [BsonElement("date_registered")]
-        public DateTime? DateRegistered { get; set; }
+        internal DateTime? DateRegistered { get; set; }
 
         [BsonElement("is_active")]
-        public bool IsActive { get; set; }
+        internal bool IsActive { get; set; }
 
         internal Customer MapToDomain()
         {

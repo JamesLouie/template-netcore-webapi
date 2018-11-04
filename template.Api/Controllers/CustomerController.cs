@@ -20,7 +20,10 @@ namespace template.Api.Controllers
         public async Task<IActionResult> Get(string customerId)
         {
             var customer = await _customerHandler.GetCustomer(customerId);
-            return Ok(customer);
+            if (customer != null)
+                return Ok(customer);
+
+            return NotFound();
         }
 
         [HttpPost]

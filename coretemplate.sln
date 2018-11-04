@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "template.Api", "template.Api\template.Api.csproj", "{69F77372-1296-4267-ABA1-FAA46FE10286}"
+	ProjectSection(ProjectDependencies) = postProject
+		{362B8359-EC97-421C-98C2-E37E55CF84B9} = {362B8359-EC97-421C-98C2-E37E55CF84B9}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "template.Domain", "template.Domain\template.Domain.csproj", "{362B8359-EC97-421C-98C2-E37E55CF84B9}"
 EndProject

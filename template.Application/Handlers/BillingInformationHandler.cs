@@ -14,7 +14,7 @@ namespace template.Application.Handlers
             _billingInformationRepository = billingInformationRepository;
         }
 
-        public BillingInformation GetBillingInformation(string billingInformationId)
+        public Task<BillingInformation> GetBillingInformation(string billingInformationId)
         {
             return _billingInformationRepository.GetBillingInformation(billingInformationId);
         }
@@ -24,14 +24,19 @@ namespace template.Application.Handlers
             return _billingInformationRepository.CreateBillingInformation(billingInformation);
         }
 
-        public void UpdateBillingInformation(BillingInformation update)
+        public Task UpdateBillingInformation(BillingInformation update)
         {
-            _billingInformationRepository.UpdateBillingInformation(update);
+            return _billingInformationRepository.UpdateBillingInformation(update);
         }
 
-        public void DeleteBillingInformation(string billingInformationId)
+        public Task DeleteBillingInformation(string billingInformationId)
         {
-            _billingInformationRepository.DeleteBillingInformation(billingInformationId);
+            return _billingInformationRepository.DeleteBillingInformation(billingInformationId);
+        }
+
+        public Task<BillingInformation> GetBillingInformationForCustomerId(string customerId)
+        {
+            return _billingInformationRepository.GetBillingInformationForCustomerId(customerId);
         }
     }
 }

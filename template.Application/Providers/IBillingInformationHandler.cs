@@ -5,9 +5,11 @@ namespace template.Application.Providers
 {
     public interface IBillingInformationHandler
     {
-        BillingInformation GetBillingInformation(string billingInformationId);
+        Task<BillingInformation> GetBillingInformation(string billingInformationId);
         Task CreateBillingInformation(BillingInformation billingInformation);
-        void UpdateBillingInformation(BillingInformation update);
-        void DeleteBillingInformation(string billingInformationId);
+        Task UpdateBillingInformation(BillingInformation update);
+        Task DeleteBillingInformation(string billingInformationId);
+
+        Task<BillingInformation> GetBillingInformationForCustomerId(string customerId);
     }
 }

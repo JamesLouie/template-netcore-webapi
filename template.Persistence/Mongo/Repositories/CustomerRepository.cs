@@ -27,8 +27,8 @@ namespace template.Persistence.Mongo.Repositories
 
         public async Task<Customer> GetCustomer(string customerId)
         {
-            var result = await _collection.Find(x => x.CustomerId == customerId).SingleAsync();
-            return result.MapToDomain();
+            var result = await _collection.Find(x => x.CustomerId == customerId).SingleOrDefaultAsync();
+            return result?.MapToDomain();
         }
 
         public async Task CreateCustomer(Customer newCustomer)
