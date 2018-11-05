@@ -3,8 +3,8 @@ using template.Api.Settings;
 using template.Application.Handlers;
 using template.Application.Interfaces.External;
 using template.Application.Providers;
-using template.Persistence.Mongo.Client;
-using template.Persistence.Mongo.Repositories;
+//using template.Persistence.Mongo.Repositories;
+using template.Persistence.Sql.Repositories;
 
 namespace template.Api.Configurations
 {
@@ -26,8 +26,6 @@ namespace template.Api.Configurations
         {
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IBillingInformationRepository, BillingInformationRepository>();
-
-            services.AddSingleton<MongoConnector>(new MongoConnector(settings.Database.ConnectionString, settings.Database.DatabaseName));
         }
     }
 }
