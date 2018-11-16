@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using template.Api.Settings;
 using template.Persistence.Mongo.Client;
+using template.Persistence.Mongo.Configurations;
 
 namespace template.Api.Configurations
 {
@@ -8,7 +9,11 @@ namespace template.Api.Configurations
     {
         public static void ConfigureMongo(this IServiceCollection services, AppSettings settings)
         {
-            services.AddSingleton<MongoConnector>(new MongoConnector(settings.Mongo.ConnectionString, settings.Mongo.DatabaseName));
+            // Settings
+            services.AddSingleton<MongoConfig>(settings.Mongo);
+
+            // Connection
+            services.AddSingleton<MongoConnector>();
         }
     }
 }

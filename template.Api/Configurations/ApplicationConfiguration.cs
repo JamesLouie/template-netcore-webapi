@@ -3,8 +3,8 @@ using template.Api.Settings;
 using template.Application.Handlers;
 using template.Application.Interfaces.External;
 using template.Application.Providers;
-//using template.Persistence.Mongo.Repositories;
-using template.Persistence.Sql.Repositories;
+using template.Persistence.Mongo.Repositories;
+//using template.Persistence.Sql.Repositories;
 
 namespace template.Api.Configurations
 {

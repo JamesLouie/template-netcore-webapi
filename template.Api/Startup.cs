@@ -23,7 +23,8 @@ namespace template.Api
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.ConfigureSql(AppSettings);
+            //services.ConfigureSql(AppSettings);
+            services.ConfigureMongo(AppSettings);
             services.ConfigureApplication(AppSettings);
             services.AddSwaggerGen();
         }

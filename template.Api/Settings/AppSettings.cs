@@ -1,4 +1,7 @@
-﻿namespace template.Api.Settings
+﻿using template.Persistence.Mongo.Configurations;
+using template.Persistence.Sql.Configurations;
+
+namespace template.Api.Settings
 {
     public class AppSettings
     {
@@ -6,13 +9,13 @@
         public SqlServerDatabase SqlServer { get; set; }
     }
 
-    public class MongoDatabase
+    public class MongoDatabase : MongoConfig
     {
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
 
-    public class SqlServerDatabase
+    public class SqlServerDatabase : SqlServerConfig
     {
         public string ConnectionString { get; set; }
     }
