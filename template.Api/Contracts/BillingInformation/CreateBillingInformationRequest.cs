@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentValidation;
 
 namespace template.Api.Contracts.BillingInformation
 {
@@ -33,6 +34,22 @@ namespace template.Api.Contracts.BillingInformation
                     CountryCode = CountryCode
                 }
             };
+        }
+
+        public class Validator : AbstractValidator<CreateBillingInformationRequest>
+        {
+            public Validator()
+            {
+                RuleFor(x => x.CreditCardNumber).NotEmpty();
+                RuleFor(x => x.SecurityCode).NotEmpty();
+                RuleFor(x => x.ExpirationDate).NotEmpty();
+                RuleFor(x => x.Address1).NotEmpty();
+                RuleFor(x => x.Address2);
+                RuleFor(x => x.City).NotEmpty();
+                RuleFor(x => x.State).NotEmpty();
+                RuleFor(x => x.ZipCode).NotEmpty();
+                RuleFor(x => x.CountryCode).NotEmpty();
+            }
         }
     }
 }

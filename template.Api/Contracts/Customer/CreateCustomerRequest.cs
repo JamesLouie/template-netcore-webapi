@@ -1,4 +1,4 @@
-﻿using System;
+﻿using FluentValidation;
 
 namespace template.Api.Contracts.Customer
 {
@@ -18,6 +18,17 @@ namespace template.Api.Contracts.Customer
                 Email = (Email != null) ? new Domain.ValueObjects.Email(Email) : null,
                 PhoneNumber = PhoneNumber
             };
+        }
+
+        public class Validator : AbstractValidator<CreateCustomerRequest>
+        {
+            public Validator()
+            {
+                RuleFor(x => x.FirstName).NotEmpty();
+                RuleFor(x => x.LastName).NotEmpty();
+                RuleFor(x => x.Email).NotEmpty();
+                RuleFor(x => x.PhoneNumber);
+            }
         }
     }
 }
