@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using template.Api.Configurations;
 using template.Api.Filters;
+using template.Api.Middleware;
 using template.Api.Settings;
 
 namespace template.Api
@@ -33,6 +34,7 @@ namespace template.Api
             services.ConfigureMongo(AppSettings);
             services.ConfigureApplication(AppSettings);
             services.AddSwaggerGen();
+            services.AddHttpContextAccessor();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -43,6 +45,7 @@ namespace template.Api
             }
 
             app.ConfigureSwagger();
+            app.UseMiddleware<TenantInterceptor>();
             app.UseMvc();
         }
     }

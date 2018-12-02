@@ -1,9 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using template.Api.MessageHandlers;
 using template.Api.Settings;
 using template.Application.Handlers;
 using template.Application.Interfaces.External;
 using template.Application.Providers;
 using template.Persistence.Mongo.Repositories;
+using template.Persistence.WebClient;
 //using template.Persistence.Sql.Repositories;
 
 namespace template.Api.Configurations

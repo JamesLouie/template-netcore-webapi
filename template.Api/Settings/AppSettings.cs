@@ -7,6 +7,7 @@ namespace template.Api.Settings
     {
         public MongoDatabase Mongo { get; set; }
         public SqlServerDatabase SqlServer { get; set; }
+        public WebClient WebClient { get; set; }
     }
 
     public class MongoDatabase : MongoConfig
@@ -18,5 +19,10 @@ namespace template.Api.Settings
     public class SqlServerDatabase : SqlServerConfig
     {
         public string ConnectionString { get; set; }
+    }
+
+    public class WebClient
+    {
+        public string BaseAddress { get; set; }
     }
 }
